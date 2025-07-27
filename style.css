@@ -12,6 +12,8 @@
   --hover-surface: rgba(255, 255, 255, 0.2);
   --hover-contrast: rgba(255, 255, 255, 0.5);
   --switch-bg-url: url(./assets/assets/moon-stars.svg);
+  /* Definindo a cor de destaque para o tema padrão (escuro) */
+  --highlight-color: rgba(255, 255, 255, 0.3);
 }
 
 .light {
@@ -22,6 +24,8 @@
   --hover-surface: rgba(0, 0, 0, 0.05);
   --hover-contrast: rgba(0, 0, 0, 0.2);
   --switch-bg-url: url(./assets/assets/sun.svg);
+  /* Definindo a cor de destaque para o tema claro */
+  --highlight-color: rgba(0, 0, 0, 0.15);
 }
 
 body {
@@ -61,8 +65,6 @@ a {
 
 /* switch */
 
-/* switch */
-
 #switch {
   position: relative;
   width: 64px;
@@ -78,17 +80,23 @@ a {
 
   position: absolute;
   top: 50%;
-  left: 0; /* Mude de 'right: 0;' para 'left: 0;' */
+  left: 0;
   z-index: 1;
   transform: translateY(-50%);
 
-  /* Adicione a transição aqui para animar o movimento */
-  transition: left 0.2s ease-in-out; /* Anima o 'left' em 0.2 segundos */
+  animation: slide-back 0.4s;
+  /* Adiciona uma transição suave para o box-shadow */
+  transition: box-shadow 0.3s ease-in-out;
 }
 
 .light #switch button {
-  /* Mude para 'left: 32px;' para mover para a direita */
-  left: 32px;
+  animation: slide-in 0.4s forwards;
+}
+
+#switch button:hover {
+  /* Altera de outline para box-shadow para permitir animação */
+  box-shadow: 0 0 0 8px var(--highlight-color);
+  cursor: pointer; /* Indica que é clicável */
 }
 
 #switch span {
@@ -98,7 +106,9 @@ a {
   background: var(--surface-color);
   border: 1px solid var(--stroke-color);
   backdrop-filter: blur(4px);
-  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(
+    4px
+  ); /* Para compatibilidade com navegadores WebKit */
   border-radius: 9999px;
 }
 
@@ -120,6 +130,9 @@ ul li {
   background: var(--surface-color);
   border-radius: 8px;
   backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(
+    4px
+  ); /* Para compatibilidade com navegadores WebKit */
   transition: all 0.5s;
 }
 
@@ -164,6 +177,25 @@ footer {
   }
 
   .light {
-    --bg-url: url(./assets/assets/bg-desktop-lightjpg);
+    --bg-url: url(./assets/assets/bg-desktop-light.jpg); /* Corrigido o erro de digitação aqui (.jpg) */
+  }
+}
+
+/* animation */
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes slide-back {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
   }
 }
