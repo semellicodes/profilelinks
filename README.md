@@ -45,7 +45,7 @@ Este projeto foi desenvolvido como parte do curso **"Discover" da Rocketseat**, 
 
 ## 💻 Projeto
 
-O Profile pe um agregador de links para usar como cartão de visitas online.
+O Profile é um agregador de links para usar como cartão de visitas online.
 
 ---
 
